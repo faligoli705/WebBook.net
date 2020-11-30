@@ -8,35 +8,49 @@ namespace WebBook.net.Service
 {
     public class BookService : IBookService
     {
-        BookDtailsContext context = new BookDtailsContext();
-        public int AddBook(BookDtailsModel bookAdd)
+        private readonly BookDtailsContext _context;
+        public BookService(BookDtailsContext context)
         {
-            throw new NotImplementedException();
+            this._context = context;
+        }
+
+        public bool AddBook(BookDtailsModel bookAdd)
+        {
+            var isbn = _context.BookDtailsModels.Where(b => b.ISBN == bookAdd.ISBN);
+            var BibliographyNumber=_context.BookDtailsModels.Where(b => b.BibliographyNumber == bookAdd.BibliographyNumber);
+            if (isbn == null && BibliographyNumber==null)
+            {
+                _context.BookDtailsModels.Add(bookAdd);
+               _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public bool DeleteBook(BookDtailsModel bookDelete)
         {
-            throw new NotImplementedException();
-        }
-
-        public BookDtailsModel FindBookById(int id)
-        {
-            throw new NotImplementedException();
+            
+            _context.BookDtailsModels.Remove(bookDelete);
+            _context.SaveChanges();
+            return true;
         }
 
         public BookDtailsModel GetBookById(int id)
         {
-            throw new NotImplementedException();
+            var idBook = _context.BookDtailsModels.FirstOrDefault(b => b.Id == id);
+            return idBook;
         }
 
         public IEnumerable<BookDtailsModel> ListBook()
         {
-           return context.BookDtailsModels.ToList();
+            return _context.BookDtailsModels.Where(m => m.IsDelete == false).ToList();
+
         }
 
         public bool UpdateBook(BookDtailsModel bookUpdate)
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
+            return true;
         }
     }
 }

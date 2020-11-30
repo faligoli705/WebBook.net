@@ -15,72 +15,75 @@ namespace WebBook.net.Controllers
     [Route("api/{controllers}")]
     public class BookController : ApiController
     {
-        BookDtailsContext _context = new BookDtailsContext();
         private readonly IBookService _bookService;
         public BookController(IBookService bookService)
         {
             this._bookService = bookService;
         }
-        //[HttpGet]
-        //public IEnumerable<BookDtailsModel> ListBook()
-        //{
-          //var result=  _bookService.ListBook().ToList();
-          //  if (!result.Any())
-          //      return NotFound(
 
-            
-          //  return await _context.BookDtailsModels.ToListAsync();
-      //  }
+        [HttpGet]
+        public IEnumerable<BookDtailsModel> ListBook() => this._bookService.ListBook().ToList();
+
 
         [Route("api/GetBookFindGetById/{id:int}")]
-        public async Task<BookDtailsModel> GetBookFindGetById(int id)
+        public IHttpActionResult GetBookFindGetById(int id)
         {
+            if (ModelState.IsValid)
+            {
+                var res = _bookService.GetBookById(id);
+                return Ok(res);
+            }
 
-            return await _context.BookDtailsModels.FirstOrDefaultAsync(b => b.Id == id);
+            return NotFound();
         }
         [HttpPost]
-        public async Task<bool> AddBook(BookDtailsModel book)
+        public IHttpActionResult AddBook(BookDtailsModel book)
         {
-            book.FileSize = 122;
-            book.Extension = "1";
-            book.FileName = "95";
+
             book.UploadDate = DateTime.Now;
             book.PublicationYear = DateTime.Now;
-            if (!ModelState.IsValid)
+            book.FileSize = 1;
+            book.IsDelete = false;
+            if (book == null)
             {
-                _context.BookDtailsModels.Add(book);
-                await _context.SaveChangesAsync();
-                return true;
+                return NotFound();
             }
-            return false;
+            else
+            {
+                var bookdetail = _bookService.AddBook(book);
+
+                return Ok(bookdetail);
+            }
+
 
         }
 
+        [Route("api/EditBook/{id:int}")]
         [HttpPut]
-        public async Task<bool> EditBook(int id, BookDtailsModel book)
+        public IHttpActionResult EditBook(int id, BookDtailsModel book)
         {
-            Console.Write(id);
 
-            if (id == book.Id)
+            if (ModelState.IsValid)
             {
-                _context.Entry(book).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return true;
+                _bookService.UpdateBook(book);
+
+                return Ok();
             }
-            return false;
+            return NotFound();
         }
         [Route("api/DeleteBook/{id:int}")]
         [HttpDelete]
-        public async Task<bool> DeleteBook(int Id, BookDtailsModel book)
+        public IHttpActionResult DeleteBook(int Id, BookDtailsModel book)
         {
 
             if (Id == book.Id)
             {
-                _context.Entry(Id).State = EntityState.Deleted;
-                await _context.SaveChangesAsync();
-                return true;
+                var delete = _bookService.DeleteBook(book);
+                return Ok();
             }
-            return false;
+
+            return NotFound();
+
         }
     }
 }

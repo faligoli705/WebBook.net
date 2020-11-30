@@ -7,12 +7,11 @@ using WebBook.net.Models;
 
 namespace WebBook.net.Service
 {
-   public interface IBookService
+    public interface IBookService
     {
-        int AddBook(BookDtailsModel bookAdd);
+        bool AddBook(BookDtailsModel bookAdd);
         bool UpdateBook(BookDtailsModel bookUpdate);
         bool DeleteBook(BookDtailsModel bookDelete);
-        BookDtailsModel FindBookById(int id);
         BookDtailsModel GetBookById(int id);
         IEnumerable<BookDtailsModel> ListBook();
 

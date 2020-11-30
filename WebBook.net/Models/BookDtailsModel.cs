@@ -36,8 +36,7 @@ namespace WebBook.net.Models
         public string Printery { get; set; }
 
         [Display(Name = " سال نشر")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public DateTime PublicationYear { get; set; }
+         public DateTime PublicationYear { get; set; }
 
         [Display(Name = " شماره کتاب شناسی ملی")]
         public int BibliographyNumber { get; set; }
@@ -77,5 +76,6 @@ namespace WebBook.net.Models
         //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(100, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
         public string FileName { get; set; }
+        public bool IsDelete { get; set; }
     }
 }
