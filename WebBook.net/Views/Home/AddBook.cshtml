@@ -1,0 +1,93 @@
+﻿<h3>اضافه کردن</h3>
+<body>
+    <div class=" table table-bordered" contenteditable="false">
+        <div class="col-lg-12" style="display:flex">
+            <div class="col-md-4">
+                نام کتاب<label style="color:red">*</label>
+
+                <input type="text" ng-model="FileNameDoc" class="form-control" />
+            </div>
+            <div class="col-md-4" dir="rtl">
+                موضوع کتاب<label style="color:red">*</label>
+                <input type="text" ng-model="FileSubject" value="" class="form-control" />
+            </div>
+            <div class="col-md-4" dir="rtl">
+                ناشر<label style="color:red">*</label>
+                <input type="text" ng-model="Publisher" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <div class="col-md-4">
+                ویراستار
+                <input type="text" ng-model="Editor" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                نشریه<label style="color:red">*</label>
+                <input type="text" ng-model="Printery" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                سال انتشار<label style="color:red">*</label>
+                <input type="text" ng-model="PublicationYear" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <div class="col-md-4">
+                شناسه کتاب شناسی ملی<label style="color:red">*</label>
+                <input type="number" ng-model="BibliographyNumber" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                شابک<label style="color:red">*</label>
+                <input type="number" ng-model="ISBN" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                قیمت<label style="color:red">*</label>
+                <input type="number" ng-model="Price" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <div class="col-md-4">
+                تعداد صفحات<label style="color:red">*</label>
+                <input type="number" ng-model="NumberOfPages" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                پیوند
+                <input type="text" ng-model="Link" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                پیوند
+                <input type="text" ng-model="Extension" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <div class="col-md-4">
+                پیوند<label style="color:red">*</label>
+                <input type="text" ng-model="FileSize" class="form-control" />
+            </div>
+             
+            <div class="col-md-4">
+                توضیحات اضافه
+                <input type="text" ng-model="Other" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <div class="col-md-4">
+                مولف<label style="color:red">*</label>
+                <input type="text" ng-model="Author" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                نویسنده خارجی
+                <input type="text" ng-model="ForeignAuthorName" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                مترجم
+                <input type="text" ng-model="Translator" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12" style="display:flex">
+            <label for="inputFile">فایل</label><label style="color:red">*</label>
+            <input type="file" ng-model="FileName.names" />
+
+            <input type="button" ng-click="save()" class="btn btn-success" style="display:flex;" value="ذخیره" />
+        </div>
+    </div>
+</body> 

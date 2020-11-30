@@ -1,0 +1,90 @@
+﻿<style>
+    .fonttext {
+        font-family: Tahoma;
+        font-size: 12px;
+        text-align: center;
+    }
+</style>
+<body class="container">
+    <h2 dir="rtl">لیست کتاب ها</h2>
+    <table class="table table-striped fonttext" dir="rtl">
+        <tr>
+            <th>
+                نام کتاب
+                <select class="form-control" name="1" ng-model="filter.FileNameDoc">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.FileNameDoc}}</option>
+                </select>
+            </th>
+            <th>
+                موضوع کتاب
+                <select class="form-control" id="1" ng-model="filter.FileSubject">
+                    <option></option>
+                    <option value="2" ng-repeat="item in book">{{item.FileSubject}}</option>
+                </select>
+            </th>
+            <th>
+                ناشر
+                <select class="form-control" ng-model="filter.Publisher">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.Publisher}}</option>
+                </select>
+            </th>
+            <th>
+                مولف
+                <select class="form-control" name="1" ng-model="filter.Author">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.Author}}</option>
+                </select>
+            </th>
+            <th>
+                نویسنده خارجی
+                <select class="form-control" name="1" ng-model="filter.ForeignAuthorName">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.ForeignAuthorName}}</option>
+                </select>
+            </th>
+            <th>
+                نام مترجم
+                <select class="form-control" name="1" ng-model="filter.Translator">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.Translator}}</option>
+                </select>
+            </th>
+            <th>
+                ویراستار
+                <select class="form-control" name="1" ng-model="filter.Editor">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.Editor}}</option>
+                </select>
+            </th>
+            <th>
+                قیمت
+                <select class="form-control" name="1" ng-model="filter.Price">
+                    <option></option>
+                    <option ng-repeat="item in book">{{item.Price}}</option>
+                </select>
+            </th>
+            <td></td>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr ng-repeat="p in book | filter:filter">            
+            <td>{{p.FileNameDoc}}</td>
+            <td>{{p.FileSubject}}</td>
+            <td>{{p.Publisher}}</td>
+            <td>{{p.Author}}</td>
+            <td>{{p.ForeignAuthorName}}</td>
+            <td>{{p.Translator}}</td>
+            <td>{{p.Editor}}</td> 
+            <td>{{p.Price}}</td> 
+            <td><input type="button" class="btn btn-warning" ng-click="deleteBook(p.Id)" value="حذف"></td>
+            <td><input type="button" class="btn btn-warning" ng-click="EditBook(p.Id)" value="ویرایش" /></td>
+            <td><input type="button" class="btn btn-link" ng-click="specifications(p.Id)" value="مشخصات" /></td>
+        </tr>
+    </table>
+</body>
+
+
