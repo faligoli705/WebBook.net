@@ -12,25 +12,23 @@ namespace WebBook.net.Controllers
     public class HomeController : Controller
     {
         
-         private readonly IBookService _bookService;
-        public HomeController(IBookService bookService)
-        {
-            this._bookService = bookService;
-        }
-        public HomeController()
-        {
-
-        }
+        // private readonly IBookService _bookService;
+        //public HomeController(IBookService bookService)
+        //{
+        //    this._bookService = bookService;
+        //}
+       
         public ActionResult Index()
         {
             return View();
         }
-         public ActionResult ListBook()
+
+        public ActionResult ListBook()
         {
-             var result = _bookService.ListBook().ToArray();
-            //if (!result.Any())
-            //    return HttpNotFound() ;
-            return PartialView(result);
+        //     var result = _bookService.ListBook().ToArray();
+        //    //if (!result.Any())
+        //    //    return HttpNotFound() ;
+            return PartialView();
         }
        
         public ActionResult AddBook()
