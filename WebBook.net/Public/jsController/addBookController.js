@@ -30,7 +30,6 @@
         $scope.save = function () {
             var res = BookService.AddBook(book);
             res.then(function () {
-                console.log("شابک یا شناسه ملی تکراری است")
                 $location.path("#/");
             });
         }

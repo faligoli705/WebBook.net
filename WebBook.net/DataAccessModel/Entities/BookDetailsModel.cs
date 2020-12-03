@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebBook.net.Models
 {
-    public class BookDtailsModel
+    public class BookDetailsModel
     {
         [Key]
         public int Id { get; set; }
@@ -18,13 +18,11 @@ namespace WebBook.net.Models
 
         [Display(Name = "موضوع کتاب")]
         [MaxLength(150, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string FileSubject { get; set; }
+         public string FileSubject { get; set; }
 
         [Display(Name = "ناشر")]
         [MaxLength(150, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string Publisher { get; set; }
+         public string Publisher { get; set; }
 
         [Display(Name = "ویراستار")]
         [MaxLength(150, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
@@ -32,8 +30,7 @@ namespace WebBook.net.Models
 
         [Display(Name = "نام نشریه")]
         [MaxLength(150, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string Printery { get; set; }
+         public string Printery { get; set; }
 
         [Display(Name = " سال نشر")]
          public DateTime PublicationYear { get; set; }
@@ -63,8 +60,7 @@ namespace WebBook.net.Models
 
         [Display(Name = "  نام مولف/نویسنده")]
         [MaxLength(100, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string Author { get; set; }
+         public string Author { get; set; }
         [Display(Name = "نویسنده خارجی")]
         [MaxLength(100, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
         public string ForeignAuthorName { get; set; }
@@ -73,9 +69,9 @@ namespace WebBook.net.Models
         public string Translator { get; set; }
 
         [Display(Name = "نام تصویر")]
-        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(100, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
+         [MaxLength(100, ErrorMessage = "{0} نباید بیشتر از {1} باشد")]
         public string FileName { get; set; }
+
         public bool IsDelete { get; set; }
     }
 }

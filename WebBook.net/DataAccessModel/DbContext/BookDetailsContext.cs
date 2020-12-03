@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebBook.net.Models
 {
-    public class BookDtailsContext : DbContext
+    public class BookDetailsContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,10 +15,10 @@ namespace WebBook.net.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public BookDtailsContext() : base("name=BookDtailsContext")
+        public BookDetailsContext() : base("name=BookDetailsContext")
         {
         }
 
-        public System.Data.Entity.DbSet<WebBook.net.Models.BookDtailsModel> BookDtailsModels { get; set; }
+        public System.Data.Entity.DbSet<WebBook.net.Models.BookDetailsModel> BookDetailsModels { get; set; }
     }
 }

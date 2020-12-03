@@ -13,7 +13,7 @@ namespace WebBook.net.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011301501140_book"; }
+            get { return "202012012324006_book"; }
         }
         
         string IMigrationMetadata.Source

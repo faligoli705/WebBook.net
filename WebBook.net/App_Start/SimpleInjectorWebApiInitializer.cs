@@ -3,11 +3,13 @@
 namespace WebBook.net.App_Start
 {
     using System.Web.Http;
+    using AutoMapper;
     using SimpleInjector;
     using SimpleInjector.Diagnostics;
     using SimpleInjector.Integration.WebApi;
     using SimpleInjector.Lifestyles;
     using WebBook.net.Controllers;
+    using WebBook.net.DataAccessDto;
     using WebBook.net.Models;
     using WebBook.net.Service;
 
@@ -17,17 +19,23 @@ namespace WebBook.net.App_Start
         public static void Initialize()
         {
             var container = new Container();
+           
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
             InitializeContainer(container);
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-
+            
             //var registration = container.GetRegistration(typeof(BookController)).Registration;
 
             container.Register<IBookService, BookService>();
-            container.Register<BookDtailsContext>();
-            Registration registration = container.GetRegistration(typeof(BookDtailsContext)).Registration;
+            container.Register<BookDetailsContext>();
+
+ 
+            Registration registration = container.GetRegistration(typeof(BookDetailsContext)).Registration;
+
+             //registration = container.GetRegistration(typeof(BookDetailModelDto)).Registration;
+
             registration.SuppressDiagnosticWarning(
                          DiagnosticType.DisposableTransientComponent,
                          "Reason of suppression");
