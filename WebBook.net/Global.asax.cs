@@ -26,8 +26,8 @@ namespace WebBook.net
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            StartIocReg ss = new StartIocReg();
-            ss.StartIocRegister();
+            StartIocReg startIocReg = new StartIocReg();
+            startIocReg.StartIocRegister();
  
 
 

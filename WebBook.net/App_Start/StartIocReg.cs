@@ -19,7 +19,7 @@ namespace WebBook.net.App_Start
         public void StartIocRegister()
         {
 
-            var container = new Container();
+            var container = new Container();      
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
             container.Register<IBookService, BookService>(Lifestyle.Scoped);
             container.Register<BookDetailsContext>(() =>
