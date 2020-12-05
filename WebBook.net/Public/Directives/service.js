@@ -3,17 +3,15 @@
     this.ListBook = function () {
         return $http.get("/Api/ListBook");
 
-    }
-    //this.BookFindGetById = function (id) {
-    //    return $http.get("Api/Book/" + 2);
-    //}
+    } 
 
-    this.AddBook = function (bookdetail) {
-        var res = $http({
-            url: "/Api/Book",
+    this.save = function (bookData) {
+         var res = $http({
+            url: "/Api/AddBook",
             method: "post",
-            data: bookdetail
+            data: bookData
         });
+
         return res;
     }
 
@@ -25,12 +23,12 @@
         });
         return res;
     }
-    this.DeleteBook = function (book) {
-        console.log(book);
-        var res = $http({
-            url: '/Api/book/' + book,
-            method: 'delete',
-            data:book
+
+    this.DeleteBook = function (id) {
+         var res = $http({
+            url: "/Api/DeleteBook/" + id,
+             method: "delete",
+             data: id
         });
         return res;
     }

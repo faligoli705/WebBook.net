@@ -20,39 +20,17 @@ namespace WebBook.net
     public class Global : HttpApplication
     {
         private void Application_Start(object sender, EventArgs e)
-        {            
+        {
+
             AreaRegistration.RegisterAllAreas();
-            
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            var container = new Container();
-            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-
-            container.Register<IBookService, BookService>(Lifestyle.Scoped);
+            StartIocReg ss = new StartIocReg();
+            ss.StartIocRegister();
  
-            container.Register<BookDetailsContext>(() => { return new BookDetailsContext(); }, Lifestyle.Scoped);
 
-            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-            container.Options.EnableAutoVerification= false;
 
-           // IBookService bookService = container.GetInstance<IBookService>();
-
-            // container.Register<IMapper, Mapper>();
-
-            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-
-            
-            container.Register<AutomapperConfig>();
-
-            
-              //container.Register<AutomapperWebProfile>();
-            container.Verify();
-
-            GlobalConfiguration.Configuration.DependencyResolver =
-                new SimpleInjectorWebApiDependencyResolver(container);
-
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }

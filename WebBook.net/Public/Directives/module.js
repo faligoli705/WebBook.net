@@ -31,4 +31,12 @@ app.config(["$routeProvider", function ($routeProvider) {
         templateUrl: "Home/Specifications/",
         controller: "specificationsController"
     });
+
+    //$routeProvider.when("/deleteBook", {
+    //    //templateUrl: "Home/ListBook/",
+    //    controller: "bookListController"
+    //});
+
+
+
 }]);

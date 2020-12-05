@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AutoMapper;
 
 namespace WebBook.net.DataAccessDto
 {
-    public class BookDetailModelDto 
+    public class BookDetailModelDto  
     {
         public int Id { get; set; } 
         public string FileNameDoc { get; set; }        

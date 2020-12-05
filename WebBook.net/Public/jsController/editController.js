@@ -26,6 +26,7 @@
     });
     $scope.EditBook = function () {
         var book = {
+            Id:$scope.Id,
             FileNameDoc: $scope.FileNameDoc,
             FileSubject: $scope.FileSubject,
             Publisher: $scope.Publisher,

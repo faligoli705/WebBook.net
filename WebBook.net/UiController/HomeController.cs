@@ -10,24 +10,15 @@ using WebBook.net.Service;
 namespace WebBook.net.Controllers
 {
     public class HomeController : Controller
-    {
+    {                       
+        public ActionResult Index()                
         
-        // private readonly IBookService _bookService;
-        //public HomeController(IBookService bookService)
-        //{
-        //    this._bookService = bookService;
-        //}
-       
-        public ActionResult Index()
         {
             return View();
         }
 
         public ActionResult ListBook()
         {
-        //     var result = _bookService.ListBook().ToArray();
-        //    //if (!result.Any())
-        //    //    return HttpNotFound() ;
             return PartialView();
         }
        

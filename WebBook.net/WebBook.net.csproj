@@ -1248,6 +1248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutomapperConfig.cs" />
+    <Compile Include="App_Start\StartIocReg.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
