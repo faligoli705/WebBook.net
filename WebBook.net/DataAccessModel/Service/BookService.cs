@@ -5,13 +5,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using WebBook.net.DataAccessDto;
+using WebBook.net.DataAccessModel.Repository;
 using WebBook.net.Models;
-
+ 
 namespace WebBook.net.Service
 {
     public class BookService : IBookService
     {
         private readonly BookDetailsContext _context;
+
+        private ResultService<BookDetailsModel> _resultServiceBook = new ResultService<BookDetailsModel>();
+        private ResultService<string> _resultServiceString = new ResultService<string>();
+
+
         public BookService(BookDetailsContext context)
         {
             this._context = context;
@@ -56,12 +62,15 @@ namespace WebBook.net.Service
             return _context.BookDetailsModels.Find(id);
         }
 
-        public IEnumerable<BookDetailsModel> ListBook()
+        public ReturnObjectT<BookDetailsModel> ListBook()
         {
-            return _context.BookDetailsModels.Where(x => x.IsDelete == false).ToList();
-            
-                
+            return _resultServiceBook.GetGoodResult(new BookDetailsModel());
         }
+
+        //public IEnumerable<BookDetailsModel> ListBook()
+        //{
+        //    return _context.BookDetailsModels.Where(x => x.IsDelete == false).ToList();                            
+        //}
 
         public bool UpdateBook(BookDetailModelDto bookUpdate)
 

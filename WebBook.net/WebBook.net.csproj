@@ -1254,6 +1254,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="DataAccessDto\BookDetailModelDto.cs" />
+    <Compile Include="DataAccessModel\Repository\ResultService.cs" />
+    <Compile Include="DataAccessModel\Repository\ReturnObject.cs" />
+    <Compile Include="DataAccessModel\Repository\ReturnObjectT.cs" />
     <Compile Include="UiController\HomeController.cs" />
     <Compile Include="Migrations\202012012324006_book.cs" />
     <Compile Include="Migrations\202012012324006_book.Designer.cs">

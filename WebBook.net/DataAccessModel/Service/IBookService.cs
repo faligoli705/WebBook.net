@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebBook.net.DataAccessDto;
+using WebBook.net.DataAccessModel.Repository;
 using WebBook.net.Models;
 
 namespace WebBook.net.Service
@@ -15,7 +16,8 @@ namespace WebBook.net.Service
         bool UpdateBook(BookDetailModelDto bookUpdate);
         bool DeleteBook(BookDetailsModel bookDelete);
         BookDetailsModel GetBookById(int id);
-        IEnumerable<BookDetailsModel> ListBook();
+        // IEnumerable<BookDetailsModel> ListBook();
+        ReturnObjectT<BookDetailsModel> ListBook();
 
 
     }
