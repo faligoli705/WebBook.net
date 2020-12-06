@@ -11,7 +11,7 @@ namespace WebBook.net.Service
 {
    public interface IBookService 
     {
-        bool AddBook(BookDetailModelDto bookAdd);
+        BookDetailsModel AddBook(BookDetailsModel bookAdd);
         bool UpdateBook(BookDetailModelDto bookUpdate);
         bool DeleteBook(BookDetailsModel bookDelete);
         BookDetailsModel GetBookById(int id);

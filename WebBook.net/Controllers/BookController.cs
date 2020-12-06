@@ -28,18 +28,7 @@ namespace WebBook.net.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            var lst = _bookService.ListBook().Select(b => new BookDetailModelDto
-            {
-                Id = b.Id,
-                FileNameDoc = b.FileNameDoc,
-                FileSubject = b.FileSubject,
-                Publisher = b.Publisher,
-                Author = b.Author,
-                ForeignAuthorName = b.ForeignAuthorName,
-                Translator = b.Translator,
-                Editor = b.Editor,
-                Price = b.Price
-            }).ToList();
+            var lst = _bookService.ListBook();
             return Ok(lst);
         }
 
@@ -54,15 +43,13 @@ namespace WebBook.net.Controllers
 
         // [Route("api/AddBook")]
         [HttpPost]
-        public IHttpActionResult AddBook(BookDetailModelDto book)
+        public IHttpActionResult AddBook(BookDetailsModel book)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
-            var data = _bookService.AddBook(book).ToString();
-            if (data == "False")
-            {
-                return BadRequest("<script language='javascript' type='text/javascript'>alert('شناسه ملی یا شابک تکراری می باشد ');</script>");
-            }
+                return BadRequest(ModelState);
+            var data = _bookService.AddBook(book);
+             
+            
             return Ok(data);
         }
 

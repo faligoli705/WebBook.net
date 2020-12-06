@@ -17,42 +17,27 @@ namespace WebBook.net.Service
             this._context = context;
         }
 
-        public bool AddBook(BookDetailModelDto book)
+        public BookDetailsModel AddBook(BookDetailsModel book)
         {
             var isbn = _context.BookDetailsModels.FirstOrDefault(x => x.ISBN == book.ISBN);
             var bibliographyNumber = _context.BookDetailsModels.FirstOrDefault(x => x.BibliographyNumber == book.BibliographyNumber);
-            if (isbn != null || bibliographyNumber != null)
+            if (isbn != null)
             {
-                return false;
+                return isbn;
             }
+            if (bibliographyNumber != null)
+                return bibliographyNumber;
             else
             {
-                var data = _context.BookDetailsModels.Add(new BookDetailsModel()
-                {
-                    FileNameDoc = book.FileNameDoc,
-                    FileSubject = book.FileSubject,
-                    Publisher = book.Publisher,
-                    Editor = book.Editor,
-                    Printery = book.Printery,
-                    PublicationYear = DateTime.Now,
-                    BibliographyNumber = book.BibliographyNumber,
-                    ISBN = book.ISBN,
-                    Price = book.Price,
-                    NumberOfPages = book.NumberOfPages,
-                    Link = book.Link,
-                    Extension = "1",
-                    FileSize = 12365,
-                    UploadDate = DateTime.Now,
-                    Other = book.Other,
-                    Author = book.Author,
-                    ForeignAuthorName = book.ForeignAuthorName,
-                    Translator = book.Translator,
-                    FileName = "File Name",
-                    IsDelete = false
-                });
-                _context.Entry(data).State = EntityState.Added;
-                _context.SaveChanges();
-                return true;
+                book.PublicationYear = DateTime.Now;
+                book.FileSize = 111;
+                book.Extension = "1";
+                book.UploadDate = DateTime.Now;
+                book.FileName = "ss";
+                var data = _context.BookDetailsModels.Add(book);
+               //_context.Entry(data).State = EntityState.Added;
+                _context.SaveChanges();                
+                return data;
             }
         }
 
@@ -65,16 +50,17 @@ namespace WebBook.net.Service
             return true;
         }
 
-        public BookDetailsModel GetBookById(int id)
+        public  BookDetailsModel GetBookById(int id)
         {
-
+            
             return _context.BookDetailsModels.Find(id);
         }
 
         public IEnumerable<BookDetailsModel> ListBook()
         {
-
-            return _context.BookDetailsModels.Where(book => book.IsDelete == false).ToList();
+            return _context.BookDetailsModels.Where(x => x.IsDelete == false).ToList();
+            
+                
         }
 
         public bool UpdateBook(BookDetailModelDto bookUpdate)

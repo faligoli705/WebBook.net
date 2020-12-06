@@ -24,7 +24,13 @@
         }
         
             var res = BookService.save(bookData);
-             res.then(function () {
+         res.then(function () {
+             if (res == "1") {
+                 $window.alert("شابک تکراری است")
+             }
+             if (res == "2")
+                 $window.alert("شناسه ملی تکراری است")
+             else
                 $location.path("#/");
             });
        
