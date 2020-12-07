@@ -12,7 +12,7 @@ namespace WebBook.net.App_Start
     {
         public void Init()
         {
-            CreateMap<BookDetailsModel, BookDetailModelDto>();
+            CreateMap<BookDetailsModel, BookDetailDto>();
         }
     }
 }

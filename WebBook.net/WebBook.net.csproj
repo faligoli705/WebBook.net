@@ -1253,24 +1253,27 @@
     <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookController.cs" />
-    <Compile Include="DataAccessDto\BookDetailModelDto.cs" />
-    <Compile Include="DataAccessModel\Repository\ResultService.cs" />
-    <Compile Include="DataAccessModel\Repository\ReturnObject.cs" />
-    <Compile Include="DataAccessModel\Repository\ReturnObjectT.cs" />
+    <Compile Include="Domain\Dto\BookDetailDto.cs" />
+    <Compile Include="Domain\Entities\BookDetails.cs" />
+    <Compile Include="Migrations\202012062255152_bookdetail.cs" />
+    <Compile Include="Migrations\202012062255152_bookdetail.Designer.cs">
+      <DependentUpon>202012062255152_bookdetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ServiceResult.cs" />
     <Compile Include="UiController\HomeController.cs" />
     <Compile Include="Migrations\202012012324006_book.cs" />
     <Compile Include="Migrations\202012012324006_book.Designer.cs">
       <DependentUpon>202012012324006_book.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="DataAccessModel\DbContext\BookDetailsContext.cs" />
+    <Compile Include="DataAccess\BookDetailsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessModel\Entities\BookDetailsModel.cs" />
+    <Compile Include="Model\BookDetailsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataAccessModel\Service\BookService.cs" />
-    <Compile Include="DataAccessModel\Service\IBookService.cs" />
+    <Compile Include="Service\BookService.cs" />
+    <Compile Include="Service\IBookService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1296,6 +1299,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202012012324006_book.resx">
       <DependentUpon>202012012324006_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012062255152_bookdetail.resx">
+      <DependentUpon>202012062255152_bookdetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

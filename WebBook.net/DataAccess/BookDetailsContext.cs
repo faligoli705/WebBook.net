@@ -19,6 +19,6 @@ namespace WebBook.net.Models
         {
         }
 
-        public System.Data.Entity.DbSet<WebBook.net.Models.BookDetailsModel> BookDetailsModels { get; set; }
+        public System.Data.Entity.DbSet<WebBook.net.Domain.Entities.BookDetails> BookDetails { get; set; }
     }
 }
