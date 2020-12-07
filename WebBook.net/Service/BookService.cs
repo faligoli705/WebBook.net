@@ -39,7 +39,8 @@ namespace WebBook.net.Service
             book.PublicationYear = DateTime.Now;
             book.IsDelete = false;
             _context.BookDetails.Add(book);
-            var result = 1; //_context.SaveChanges();
+            var result = _context.SaveChanges();
+
             if (result > 0)
                 return ServiceResult<BookDetails>.Succeed(book);
             return ServiceResult<BookDetails>.Failed(new List<string> { "Data not inserted!!!" });
@@ -50,18 +51,21 @@ namespace WebBook.net.Service
             var errors = new List<string>();
             if (id < 0)
                 errors.Add("Nothing found or not selected");
-            if (errors.Any())
-                return ServiceResult<BookDetails>.Failed(errors);
-            //var book = _context.BookDetails.SingleOrDefault(x => x.Id == id && x.IsDelete == false);
 
             if (_context.BookDetails.Any(x => x.Id == id && x.IsDelete != false))
                 errors.Add("It has already been deleted");
+
+            var book = _context.BookDetails.Find(id);
+
+            if (book == null)
+                errors.Add("Nothing found ");
             if (errors.Any())
                 return ServiceResult<BookDetails>.Failed(errors);
-            var book = _context.BookDetails.Find(id);
-            book.IsDelete = true;
-            _context.SaveChanges();
-            var result = 1;
+
+            var result = _context.SaveChanges();
+            if (result > 0)
+                book.IsDelete = true;
+
             if (result > 0)
                 return ServiceResult<BookDetails>.Succeed(book);
             return ServiceResult<BookDetails>.Failed(new List<string> { "Data not found or Already deleted" });
@@ -73,11 +77,13 @@ namespace WebBook.net.Service
             var errors = new List<string>();
             if (id == 0)
                 errors.Add("The id is empty");
+      
+            var book = _context.BookDetails.Find(id);
+             
             if (errors.Any())
                 return ServiceResult<BookDetails>.Failed(errors);
-            var book = _context.BookDetails.Find(id);
-            var result = 1;
-            if (result > 0)
+
+             if (book!=null)
                 return ServiceResult<BookDetails>.Succeed(book);
             return ServiceResult<BookDetails>.Failed(new List<string> { "Nothing found" });
         }
@@ -113,8 +119,7 @@ namespace WebBook.net.Service
             if (errors.Any())
                 return ServiceResult<BookDetails>.Failed(errors);
             _context.Entry(book).State = EntityState.Modified;
-            _context.SaveChanges();
-            var result = 1;
+            var result = _context.SaveChanges();
             if (result > 0)
                 return ServiceResult<BookDetails>.Succeed(book);
             return ServiceResult<BookDetails>.Failed(new List<string> { "Data not inserted" });

@@ -11,8 +11,7 @@ using System.Web.Http;
 using WebBook.net.DataAccessDto;
 using WebBook.net.Service;
 using WebBook.net.Models;
-using WebBook.net.Service;
-using WebBook.net.Domain.Entities;
+ using WebBook.net.Domain.Entities;
 
 namespace WebBook.net.Controllers
 {
